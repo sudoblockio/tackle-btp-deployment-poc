@@ -1,0 +1,59 @@
+
+base<_:
+  state:
+    type: dict
+    default->: yaml state.yaml
+    visible: false
+  chain:
+    type: str
+    default->: select --choices keys(state['chains'])
+    description: The chain to operate on (ie icon, eth, etc)
+  network:
+    type: str
+    default->: select --choices keys(state['chains'][chain]['networks'])
+    description: The chain's network to operate on (ie mainnet, berlin, etc)
+  # Vars
+  network_data:
+    type: dict
+    default->: var {{state['chains'][chain]['networks'][network]}}
+    visible: false
+
+base_contract<_:
+  extends: base
+  contract:
+    type: str
+    default->: select --choices keys(network_data['contracts'])
+    description: The contract to run (ie bts, bmc, etc)
+  contract_data:
+    default->: var {{network_data['contracts'][contract]}}
+    visible: false
+
+get_contract_state<_:
+  chain: str
+  network:
+
+get_state<_:
+  chain: str
+  network:
+
+
+update_state<_:
+  chain: str
+  network: str
+  contract: str
+  key: str
+  value: str
+  state_path:
+    type: str
+    description: Name of the state file
+    default: state.yaml
+  exec:
+    state->: yaml {{state_path}}
+    update_path->: var state/chains/{{chain}}/networks/{{network}}/contracts/{{contract}}/{{key}}
+    info->: print Updating path={{update_path}}
+    set-key_>: set {{update_path}} {{value}}
+    update:
+      ->: yaml_in_place
+      path: state.yaml
+      contents: {{state}}
+

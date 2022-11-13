@@ -1,0 +1,12 @@
+rpc_call<_:
+  rpc_uri:
+    type: str
+  payload:
+    type: dict
+  return: block_number
+  exec:
+    rpc_call:
+      _>: http_post {{rpc_uri}}
+      header:
+        Content-Type: application/json
+      payload: {{payload}}

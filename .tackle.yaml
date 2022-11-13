@@ -1,0 +1,76 @@
+
+
+<-:
+  help: Tool to build, deploy, and provision BTP contracts
+  extends: base
+  exec:
+    info->: print Running deployment tool
+    action:
+      ->: select
+      choices:
+        - build
+        - deploy
+        - provision
+    do:
+      ->: match action
+      case:
+        build->: build --chain {{chain}} --network {{network}}
+        deploy->: deploy --chain {{chain}} --network {{network}}
+        provision->: provision --chain {{chain}} --network {{network}}
+
+build<-:
+  help: Build contracts for a particular chain
+  extends: base
+  exec:
+    script->: path_join ['eth','scripts','build.sh']
+    info->: print Running build script={{script}}
+    build:
+      ->: match chain
+      case:
+        eth->: command bash {{script}} {{network}}
+        icon->: command bash {{script}} {{network}}
+
+deploy<-:
+  help: Deploy a contract to a chain / network
+  extends: base_contract
+  exec:
+    path->: ['{{chain}}','scripts','deploy.sh']
+    script->: path_join {{path}}
+    info->: print Running deploy script={{script}}
+    deploy:
+      ->: match chain
+      case:
+        eth->: command bash {{script}} {{network}} {{contract_data.version}}
+        icon->: command bash {{script}} {{network}} {{contract_data.version}}
+
+    address->: "{{random_hex()|capitalize}}"
+    address-info_>: print Using address=0x{{address}}
+    key_values:
+      - key: address
+        value->: 0x{{address}}
+      - key: version
+        value->: bump_version {{contract_data.version}}
+    update-state:
+      ->: update_state
+      for: key_values
+      chain: {{chain}}
+      network: {{network}}
+      contract: {{contract}}
+      key: {{item.key}}
+      value: {{item.value}}
+
+configure<-:
+  help: Configure a contract on a chain / network
+  extends: base_contract
+  exec:
+    path->: ['{{chain}}','scripts','configure.sh']
+    script->: path_join {{path}}
+    info->: print Running build script ./{{chain}}/build.sh {{network}}
+    update-state:
+      ->: update_state
+      for: key_values
+      chain: {{chain}}
+      network: {{network}}
+      contract: {{contract}}
+      key: {{item.key}}
+      value: {{item.value}}

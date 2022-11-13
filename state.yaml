@@ -1,0 +1,88 @@
+chains:
+  eth:
+    networks:
+      mainnet:
+        contracts:
+          bmc:
+            address: '0x0c517636'
+            deployment_tx_hash: 0xETHBMCD
+            owner: 0x
+            ownerWalletName: one.json
+            state: null
+            updated_block: 10000
+            version: v0.1.21
+          bts:
+            address: 0xETHBTS
+            deployment_tx_hash: 0xETHBTSD
+            owner: 0x
+            version: v0.1.0
+        rpc_uri: https://eth.com
+      sepolia:
+        contracts:
+          bmc:
+            address: 0xETHBMC
+            deployment_tx_hash: 0xETHBMCD
+            owner: 0x
+            version: v0.1.0
+          bts:
+            address: 0xETHBTS
+            deployment_tx_hash: 0xETHBTSD
+            owner: 0x
+            version: v0.1.0
+        rpc_uri: https://eth.com
+  icon:
+    networks:
+      berlin:
+        contracts:
+          bmc:
+            address: 0xETHBMC
+            deployment_tx_hash: 0xETHBMCD
+            owner: 0x
+            version: v0.1.0
+          bts:
+            address: 0xETHBTS
+            deployment_tx_hash: 0xETHBTSD
+            owner: 0x
+            version: v0.1.0
+        rpc_uri: https://api.berlin.icon.community/api/v3
+      mainnet:
+        contracts:
+          bmc:
+            address: 0xETHBMC
+            deployment_tx_hash: 0xETHBMCD
+            owner: 0x
+            version: v0.1.0
+          bts:
+            address: 0xETHBTS
+            deployment_tx_hash: 0xETHBTSD
+            owner: 0x
+            version: v0.1.0
+        rpc_uri: https://api.icon.community/api/v3
+  near:
+    networks:
+      berlin:
+        contracts:
+          bmc:
+            address: 0xETHBMC
+            deployment_tx_hash: 0xETHBMCD
+            owner: 0x
+            version: v0.1.0
+          bts:
+            address: 0xETHBTS
+            deployment_tx_hash: 0xETHBTSD
+            owner: 0x
+            version: v0.1.0
+        rpc_uri: https://api.berlin.icon.community/api/v3
+      mainnet:
+        contracts:
+          bmc:
+            address: 0xETHBMC
+            deployment_tx_hash: 0xETHBMCD
+            owner: 0x
+            version: v0.1.0
+          bts:
+            address: 0xETHBTS
+            deployment_tx_hash: 0xETHBTSD
+            owner: 0x
+            version: v0.1.0
+        rpc_uri: https://api.icon.community/api/v3

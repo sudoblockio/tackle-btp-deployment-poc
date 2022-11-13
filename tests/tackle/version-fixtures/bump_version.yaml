@@ -1,0 +1,3 @@
+bump_version_minor->: bump_version v0.1.0 --version_bump minor
+bump_version_major->: bump_version v0.1.0 --version_bump major
+bump_version_patch->: bump_version v0.1.0
