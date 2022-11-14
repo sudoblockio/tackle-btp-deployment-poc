@@ -15,7 +15,7 @@ pip install tackle-box
 For a selector on which action to take:
 ```shell
 tackle help 
-```
+``` 
 
 > This could be deprecated in favor of requiring calling hooks as below
 

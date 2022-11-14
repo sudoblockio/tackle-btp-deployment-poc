@@ -4,13 +4,13 @@ chains:
       mainnet:
         contracts:
           bmc:
-            address: '0x0c517636'
+            address: '0xBd09e783'
             deployment_tx_hash: 0xETHBMCD
             owner: 0x
             ownerWalletName: one.json
             state: null
             updated_block: 10000
-            version: v0.1.21
+            version: v0.1.23
           bts:
             address: 0xETHBTS
             deployment_tx_hash: 0xETHBTSD
@@ -30,7 +30,7 @@ chains:
             owner: 0x
             version: v0.1.0
         rpc_uri: https://eth.com
-  icon:
+  foochain:
     networks:
       berlin:
         contracts:
@@ -58,7 +58,7 @@ chains:
             owner: 0x
             version: v0.1.0
         rpc_uri: https://api.icon.community/api/v3
-  near:
+  icon:
     networks:
       berlin:
         contracts:
